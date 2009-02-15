@@ -8,7 +8,7 @@ module ActionController
     name.to_s.split('::').inject(self) do |namespace, name|
       begin
         namespace.const_get(name)
-      rescue LoadError
+      rescue NameError
         namespace.const_set(name, Module.new)
       end
     end
