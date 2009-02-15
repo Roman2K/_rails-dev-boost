@@ -45,6 +45,16 @@ class RailsDevelopmentBoostTest < Test::Unit::TestCase
     end
   end
   
+  def test_mixin_side_effect
+    load_from "mixin_side_effect"
+    
+    assert_different_object_id 'A', 'A::M', 'A::C' do
+      reload! do
+        update("a/m.rb")
+      end
+    end
+  end
+  
   def test_mixin_update_cascade
     load_from "mixins"
     
@@ -192,6 +202,7 @@ private
     Deps.clear
     Deps.history.clear
     
+    # Sanity checks
     assert_equal([], Deps.constants_being_removed, message)
     assert_equal([], Deps.module_cache, message)
     assert_equal(Set.new, Deps.loaded, message)
