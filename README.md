@@ -10,10 +10,10 @@ I needed better performance in development mode right away, so here is an altern
 
 ## Usage
 
-    script/plugin install git://github.com/Roman2K/rails-dev-boost
+    script/plugin install <repo>
 
 When the server is started in *development* mode, the special unloading mechanism takes over.
 
-It can also be used in combination with [RailsTestServing](https://github.com/Roman2K/rails-test-serving) for even faster test runs by forcefully enabling it in test mode. To do so, add the following in `config/environments/test.rb`:
+It can also be used in combination with RailsTestServing for even faster test runs by forcefully enabling it in test mode. To do so, add the following in `config/environments/test.rb`:
 
     def config.soft_reload() true end if RailsTestServing.active?
