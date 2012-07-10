@@ -112,7 +112,7 @@ module RailsDevelopmentBoost
     
     # egrep -ohR '@\w*([ck]lass|refl|target|own)\w*' activerecord | sort | uniq
     def update_activerecord_related_references(klass)
-      return unless defined?(ActiveRecord)
+      return unless defined?(ActiveRecord::Base)
       return unless klass < ActiveRecord::Base
 
       # Reset references held by macro reflections (klass is lazy loaded, so
